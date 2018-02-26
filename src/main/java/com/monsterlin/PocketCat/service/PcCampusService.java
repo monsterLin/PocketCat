@@ -19,7 +19,7 @@ public interface PcCampusService {
 
     int updatePcCampus(PcCampusJob pcCampusJob);
 
-    List<PcCampusJob> getPcCampusByPage(int pageNum, int pageSize);
+    List<PcCampusJob> getPcCampusByPage(int state,int pageNum, int pageSize);
 
     PcCampusJob getPcCampusJobByJid ( int jid );
 }

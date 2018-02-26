@@ -21,8 +21,8 @@ public interface PcSocialJobsDao {
      * @param pcSocialJob
      * @return
      */
-    @Insert("INSERT INTO pc_social_jobs(title,place,time,price,source,detailUrl,isBlack,created)" +
-            "VALUES(#{title},#{place},#{time},#{price},#{source},#{detailUrl},#{isBlack},#{created})")
+    @Insert("INSERT INTO pc_social_jobs(title,place,time,price,source,detailUrl,state,created)" +
+            "VALUES(#{title},#{place},#{time},#{price},#{source},#{detailUrl},#{state},#{created})")
     int insertPcSocialJob(PcSocialJob pcSocialJob);
 
 
@@ -39,8 +39,8 @@ public interface PcSocialJobsDao {
      * @param pageSize
      * @return
      */
-    @Select("SELECT * FROM pc_social_jobs LIMIT #{start},#{pageSize}")
-    List<PcSocialJob> getPcSocialJobByPage(@Param("start") int start, @Param("pageSize") int pageSize);
+    @Select("SELECT * FROM pc_social_jobs  where state = #{state} LIMIT #{start},#{pageSize}")
+    List<PcSocialJob> getPcSocialJobByPage(@Param("state") int state , @Param("start") int start, @Param("pageSize") int pageSize);
 
 
     /**

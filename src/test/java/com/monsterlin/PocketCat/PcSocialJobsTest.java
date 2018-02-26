@@ -43,7 +43,7 @@ public class PcSocialJobsTest {
 
     @Test
     public void testSelect() {
-        List<PcSocialJob> pcSocialJobList = pcSocialJobService.getPcSocialJobByPage(1, 10);
+        List<PcSocialJob> pcSocialJobList = pcSocialJobService.getPcSocialJobByPage(1, 1,10);
 
         for (PcSocialJob pcSocialJob : pcSocialJobList) {
             System.out.println(pcSocialJob.getTitle());

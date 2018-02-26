@@ -36,7 +36,7 @@ public interface PcSocialJobService {
      * @param pageSize
      * @return
      */
-    List<PcSocialJob> getPcSocialJobByPage(int pageNum, int pageSize);
+    List<PcSocialJob> getPcSocialJobByPage(int state,int pageNum, int pageSize);
 
     /**
      * 删除数据

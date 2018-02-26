@@ -49,7 +49,7 @@ public class PcSocialJob {
     /**
      * 是否进入小黑屋（0:进入 1: 不进入）
      */
-    private int isBlack;
+    private int state;
 
     /**
      * 职位创建时间
@@ -60,14 +60,14 @@ public class PcSocialJob {
     public PcSocialJob() {
     }
 
-    public PcSocialJob(String title, String place, String time, String price, String source, String detailUrl, int isBlack, long created) {
+    public PcSocialJob(String title, String place, String time, String price, String source, String detailUrl, int state, long created) {
         this.title = title;
         this.place = place;
         this.time = time;
         this.price = price;
         this.source = source;
         this.detailUrl = detailUrl;
-        this.isBlack = isBlack;
+        this.state = state;
         this.created = created;
     }
 
@@ -127,12 +127,12 @@ public class PcSocialJob {
         this.detailUrl = detailUrl;
     }
 
-    public int getIsBlack() {
-        return isBlack;
+    public int getstate() {
+        return state;
     }
 
-    public void setIsBlack(int isBlack) {
-        this.isBlack = isBlack;
+    public void setstate(int state) {
+        this.state = state;
     }
 
     public long getCreated() {

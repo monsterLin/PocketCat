@@ -34,9 +34,9 @@ public class PcSocialJobServiceImpl implements PcSocialJobService {
     }
 
     @Override
-    public List<PcSocialJob> getPcSocialJobByPage(int pageNum, int pageSize) {
+    public List<PcSocialJob> getPcSocialJobByPage(int state,int pageNum, int pageSize) {
         int start = (pageNum-1)*pageSize;
-        return  pcSocialJobsDao.getPcSocialJobByPage(start,pageSize);
+        return  pcSocialJobsDao.getPcSocialJobByPage(state , start,pageSize);
     }
 
     @Override

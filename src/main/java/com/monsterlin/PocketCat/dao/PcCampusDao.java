@@ -14,8 +14,8 @@ import java.util.List;
  */
 @Mapper
 public interface PcCampusDao {
-    @Insert("INSERT INTO pc_campus_jobs(title,content,price,place,author,isBlack,beginTime,endTime,createTime,updateTime)" +
-            "VALUES(#{title},#{content},#{price},#{place},#{author},#{isBlack},#{beginTime},#{endTime},#{createTime},#{updateTime})")
+    @Insert("INSERT INTO pc_campus_jobs(title,content,price,place,author,state,beginTime,endTime,createTime,updateTime)" +
+            "VALUES(#{title},#{content},#{price},#{place},#{author},#{state},#{beginTime},#{endTime},#{createTime},#{updateTime})")
     int insertPcCampusJob(PcCampusJob pcCampusJob);
 
     @Delete("DELETE FROM pc_campus_jobs where jid = #{jid}")
@@ -23,13 +23,13 @@ public interface PcCampusDao {
 
     @Update("UPDATE pc_campus_jobs set title=#{title},content=#{content}," +
             "price=#{price},place=#{place},author=#{author}," +
-            "isBlack=#{isBlack},beginTime=#{beginTime},endTime=#{endTime}," +
+            "state=#{state},beginTime=#{beginTime},endTime=#{endTime}," +
             "createTime=#{createTime},updateTime=#{updateTime} " +
             "WHERE jid = #{jid}")
     int updatePcCampusJob(PcCampusJob pcCampusJob);
 
-    @Select("SELECT * FROM pc_campus_jobs LIMIT #{start},#{pageSize}")
-    List<PcCampusJob> getPcCampusJobByPage(@Param("start") int start, @Param("pageSize") int pageSize);
+    @Select("SELECT * FROM pc_campus_jobs  where state = #{state} LIMIT #{start},#{pageSize}")
+    List<PcCampusJob> getPcCampusJobByPage(@Param("state") int state , @Param("start") int start, @Param("pageSize") int pageSize);
 
     @Select("SELECT * FROM pc_campus_jobs where jid = #{jid}")
     PcCampusJob getPcCampusJobByJid ( int jid );

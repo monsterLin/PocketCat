@@ -43,7 +43,7 @@ public class PcCampusJob {
     /**
      * 是否拉黑
      */
-    private int isBlack;
+    private int state;
 
     /**
      * 开始时间
@@ -68,13 +68,13 @@ public class PcCampusJob {
     public PcCampusJob() {
     }
 
-    public PcCampusJob(String title, String content, String price, String place, String author, int isBlack, long beginTime, long endTime, long createTime, long updateTime) {
+    public PcCampusJob(String title, String content, String price, String place, String author, int state, long beginTime, long endTime, long createTime, long updateTime) {
         this.title = title;
         this.content = content;
         this.price = price;
         this.place = place;
         this.author = author;
-        this.isBlack = isBlack;
+        this.state = state;
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.createTime = createTime;
@@ -129,12 +129,12 @@ public class PcCampusJob {
         this.author = author;
     }
 
-    public int getIsBlack() {
-        return isBlack;
+    public int getstate() {
+        return state;
     }
 
-    public void setIsBlack(int isBlack) {
-        this.isBlack = isBlack;
+    public void setstate(int state) {
+        this.state = state;
     }
 
     public long getBeginTime() {

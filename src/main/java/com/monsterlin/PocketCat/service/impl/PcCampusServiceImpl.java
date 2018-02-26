@@ -38,9 +38,9 @@ public class PcCampusServiceImpl implements PcCampusService {
     }
 
     @Override
-    public List<PcCampusJob> getPcCampusByPage(int pageNum, int pageSize) {
+    public List<PcCampusJob> getPcCampusByPage(int state,int pageNum, int pageSize) {
         int start = (pageNum - 1) * pageSize;
-        return pcCampusDao.getPcCampusJobByPage(start, pageSize);
+        return pcCampusDao.getPcCampusJobByPage(state,start,pageSize);
     }
 
     @Override

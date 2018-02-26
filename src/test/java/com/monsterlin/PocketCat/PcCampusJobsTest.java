@@ -42,7 +42,7 @@ public class PcCampusJobsTest {
 
     @Test
     public void testSelect(){
-        List<PcCampusJob> pcCampusJobs = pcCampusService.getPcCampusByPage(1,10);
+        List<PcCampusJob> pcCampusJobs = pcCampusService.getPcCampusByPage(1,1,10);
 
         for(int i = 0 ; i < pcCampusJobs.size();i++){
             System.out.println(pcCampusJobs.get(i).getTitle());
