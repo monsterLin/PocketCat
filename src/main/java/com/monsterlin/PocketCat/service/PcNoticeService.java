@@ -23,10 +23,9 @@ public interface PcNoticeService {
     /**
      * 删除公告
      * @param nid
-     * @param token
      * @return
      */
-    int deletePcNotice(int nid, String token);
+    int deletePcNotice(int nid);
 
     /**
      * 更新公告
@@ -42,4 +41,11 @@ public interface PcNoticeService {
      * @return
      */
     List<PcNotice> getPcNoticeByPage(int pageNum, int pageSize);
+
+    /**
+     * 根据nid查询公告
+     * @param nid
+     * @return
+     */
+    PcNotice getPcNoticeByNid(int nid);
 }

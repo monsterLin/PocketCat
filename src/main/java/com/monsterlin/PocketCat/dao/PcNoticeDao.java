@@ -20,13 +20,15 @@ public interface PcNoticeDao {
     int insertPcNotice(PcNotice pcNotice);
 
     @Delete("DELETE FROM pc_notice where nid = #{nid}")
-    int deletePcNotice(@Param("nid") int nid, String token);
+    int deletePcNotice(@Param("nid") int nid);
 
-    @Update("UPDATE pc_notice where title=#{title},content=#{content},createTime=#{createTime},updateTime=#{updateTime}")
+    @Update("UPDATE pc_notice set title=#{title},content=#{content},createTime=#{createTime},updateTime=#{updateTime} WHERE nid = #{nid}")
     int updatePcNotice(PcNotice pcNotice);
 
     @Select("SELECT * FROM pc_notice LIMIT #{start},#{pageSize}")
     List<PcNotice> getPcNoticeByPage(@Param("start") int start, @Param("pageSize") int pageSize);
 
 
+    @Select("SELECT * FROM pc_notice where nid = #{nid}")
+    PcNotice getPcNoticeByNid(int nid);
 }

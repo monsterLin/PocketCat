@@ -46,10 +46,9 @@ public interface PcSocialJobsDao {
     /**
      * 删除兼职
      * @param jid
-     * @param token
      * @return
      */
     @Delete("DELETE FROM pc_social_jobs where jid = #{jid}")
-    int deletePcSocialJob(@Param("jid") int jid, String token);
+    int deletePcSocialJob(@Param("jid") int jid);
 
 }

@@ -2,6 +2,7 @@ package com.monsterlin.PocketCat;
 
 import com.monsterlin.PocketCat.dao.PcAdminDao;
 import com.monsterlin.PocketCat.domain.PcAdmin;
+import com.monsterlin.PocketCat.service.PcAdminService;
 import com.monsterlin.PocketCat.utils.MD5Util;
 import com.monsterlin.PocketCat.utils.RandomUtil;
 import com.monsterlin.PocketCat.utils.TimeUtil;
@@ -10,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 /**
  * @author : monsterLin
@@ -24,33 +27,44 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PcAdminTest {
 
     @Autowired
-    private PcAdminDao pcAdminDao;
+    private PcAdminService pcAdminService;
 
     @Test
-    public void testInsert() throws Exception{
+    public void testInsert() {
         String initPassword = "baby123";
         String salt = RandomUtil.createSalt();
-        String password = MD5Util.encode(initPassword,salt);
+        String password = MD5Util.encode(initPassword, salt);
 
         long timeStamp = TimeUtil.getNowTimeStamp();
 
-        PcAdmin pcAdmin = new PcAdmin("test",password,salt,"monsterlin@monsterlin.com",timeStamp,timeStamp);
+        PcAdmin pcAdmin = new PcAdmin("test", password, salt, "monsterlin@monsterlin.com", timeStamp, timeStamp);
 
-        int result = pcAdminDao.insertAdmin(pcAdmin);
+        int result = pcAdminService.insertAdmin(pcAdmin);
 
-        System.out.println("-->>>::"+result);
-
+        System.out.println("-->>>::" + result);
 
     }
 
 
     @Test
-    public void testSelect() throws  Exception{
-//       List<PcAdmin> pcAdminList =  pcAdminDao.getAllAdmin();
-//       System.out.println(pcAdminList.size()+"");
+    public void testSelect() {
 
-       PcAdmin pcAdmin = pcAdminDao.findAdminByUserName("monsterlin");
+        PcAdmin pcAdmin = pcAdminService.findAdminByUserName("monsterlin");
 
-       System.out.println(pcAdmin.getEmail());
+        System.out.println(pcAdmin.getEmail());
+    }
+
+    @Test
+    public void testSelectAdmin() {
+        PcAdmin pcAdmin = pcAdminService.selectAdmin("monsterlin", "dfd709dbeac7508e4e6f728e1c71a42a");
+        System.out.println(pcAdmin.toString());
+    }
+
+
+    @Test
+    public void testGetAllAdmin() {
+        List<PcAdmin> pcAdminList = pcAdminService.getAllAdmin();
+        System.out.println(pcAdminList.size() + "");
+
     }
 }

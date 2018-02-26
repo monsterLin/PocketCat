@@ -40,8 +40,8 @@ public class PcSocialJobServiceImpl implements PcSocialJobService {
     }
 
     @Override
-    public int deletePcSocialJob(int jid, String token) {
-        return pcSocialJobsDao.deletePcSocialJob(jid,token);
+    public int deletePcSocialJob(int jid) {
+        return pcSocialJobsDao.deletePcSocialJob(jid);
     }
 
 }

@@ -25,21 +25,35 @@ import java.util.List;
 @SpringBootTest
 public class PcNoticeTest {
     @Resource
-    PcNoticeService pcNoticeService ;
+    PcNoticeService pcNoticeService;
 
     @Test
-    public void testInsert(){
+    public void testInsert() {
         long nowStamp = TimeUtil.getNowTimeStamp();
-        PcNotice pcNotice = new PcNotice("测试标题","测试标题","monsterlin",nowStamp,nowStamp);
+        PcNotice pcNotice = new PcNotice("测试标题", "测试标题", "monsterlin", nowStamp, nowStamp);
         int result = pcNoticeService.insertPcNotice(pcNotice);
-        System.out.println("影响的行数："+result);
+        System.out.println("影响的行数：" + result);
     }
 
     @Test
-    public void testSelect(){
-        List<PcNotice> list = pcNoticeService.getPcNoticeByPage(1,10);
-        for (PcNotice pcNotice:list){
-            System.out.println(pcNotice.getAuthor()+":"+pcNotice.getTitle());
+    public void testSelect() {
+        List<PcNotice> list = pcNoticeService.getPcNoticeByPage(1, 10);
+        for (PcNotice pcNotice : list) {
+            System.out.println(pcNotice.getAuthor() + ":" + pcNotice.getTitle());
         }
+    }
+
+    @Test
+    public void testDelete() {
+        int result = pcNoticeService.deletePcNotice(3);
+        System.out.println("影响的行数：" + result);
+    }
+
+    @Test
+    public void testUpdate() {
+        PcNotice pcNotice = pcNoticeService.getPcNoticeByNid(2);
+        pcNotice.setTitle("更改后的标题");
+        int result = pcNoticeService.updatePcNotice(pcNotice);
+        System.out.println("影响的行数：" + result);
     }
 }

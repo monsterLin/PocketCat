@@ -28,8 +28,8 @@ public class PcNoticeServiceImpl implements PcNoticeService {
     }
 
     @Override
-    public int deletePcNotice(int nid, String token) {
-        return pcNoticeDao.deletePcNotice(nid, token);
+    public int deletePcNotice(int nid) {
+        return pcNoticeDao.deletePcNotice(nid);
     }
 
     @Override
@@ -41,5 +41,10 @@ public class PcNoticeServiceImpl implements PcNoticeService {
     public List<PcNotice> getPcNoticeByPage(int pageNum, int pageSize) {
         int start = (pageNum - 1) * pageSize;
         return pcNoticeDao.getPcNoticeByPage(start, pageSize);
+    }
+
+    @Override
+    public PcNotice getPcNoticeByNid(int nid) {
+        return pcNoticeDao.getPcNoticeByNid(nid);
     }
 }

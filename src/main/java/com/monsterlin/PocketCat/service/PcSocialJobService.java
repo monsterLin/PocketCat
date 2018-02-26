@@ -40,8 +40,7 @@ public interface PcSocialJobService {
 
     /**
      * 删除数据
-     * @param token
      * @return
      */
-    int deletePcSocialJob(int jid, String token);
+    int deletePcSocialJob(int jid);
 }

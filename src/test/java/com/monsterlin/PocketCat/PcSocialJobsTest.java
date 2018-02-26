@@ -25,8 +25,6 @@ import java.util.List;
 @SpringBootTest
 public class PcSocialJobsTest {
 
-    @Autowired
-    private PcSocialJobsDao pcSocialJobsDao;
 
     @Resource
     private PcSocialJobService pcSocialJobService;
@@ -34,17 +32,17 @@ public class PcSocialJobsTest {
 
 
     @Test
-    public void testInsert() throws Exception {
+    public void testInsert() {
 
         List<PcSocialJob> pcSocialJobList = GrabSocialJobs.grabTopPartJobs();
 
         for (PcSocialJob pcSocialJob : pcSocialJobList) {
-            pcSocialJobsDao.insertPcSocialJob(pcSocialJob);
+            pcSocialJobService.insertPcSocialJob(pcSocialJob);
         }
     }
 
     @Test
-    public void testSelect() throws Exception {
+    public void testSelect() {
         List<PcSocialJob> pcSocialJobList = pcSocialJobService.getPcSocialJobByPage(1, 10);
 
         for (PcSocialJob pcSocialJob : pcSocialJobList) {
@@ -52,6 +50,11 @@ public class PcSocialJobsTest {
         }
     }
 
+    @Test
+    public void testDelete(){
+        int result = pcSocialJobService.deletePcSocialJob(6);
+        System.out.println("影响的行数："+result);
+    }
 
 
 }
