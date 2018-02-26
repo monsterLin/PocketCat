@@ -25,4 +25,7 @@ public interface PcAdminDao {
 
     @Select("SELECT * FROM pc_admin where username = #{username}")
     PcAdmin findAdminByUserName(@Param("username") String username);
+
+    @Select("SELECT * FROM pc_admin where username = #{username} and password = #{password}")
+    PcAdmin selectAdmin(@Param("username") String username, @Param("password") String password);
 }

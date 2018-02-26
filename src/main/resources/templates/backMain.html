@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="jumbotron">
+    <h1>「 云打印管理后台 」</h1>
+
+    <table align="center">
+        <tr>
+            <td> <p th:text="'当前管理员:&nbsp;&nbsp;'+${userName}"></p></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><p><a href="clear">注销</a></p></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

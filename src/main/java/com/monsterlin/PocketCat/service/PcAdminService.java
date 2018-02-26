@@ -30,10 +30,18 @@ public interface PcAdminService {
     int insertAdmin(PcAdmin pcAdmin);
 
     /**
-     * 用户登陆
+     * 查询是否存在这个用户
      * @param username
      * @return
      */
     PcAdmin findAdminByUserName(String username);
+
+    /**
+     * 用户登录
+     * @param username
+     * @param password
+     * @return
+     */
+    PcAdmin selectAdmin(String username ,String password);
 
 }
