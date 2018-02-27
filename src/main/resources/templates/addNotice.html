@@ -61,9 +61,9 @@
                 <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>公告</div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
                     <li><a href="/backMain">主页</a></li>
-                    <li><a href="/backMain/allNotice">公告管理</a></li>
-                    <li class="active"><a href="/backMain/addNotice">新增公告</a></li>
-                    <li><a href="/backMain/updateNotice">更新公告</a></li>
+                    <li ><a href="/backMain/notice/allNotice">公告管理</a></li>
+                    <li class="active"><a href="/backMain/notice/addNotice">新增公告</a></li>
+                    <li ><a href="/backMain/notice/updateNotice">更新公告</a></li>
 
                 </ul>
 
@@ -81,27 +81,25 @@
             </div>
         </div>
         <div CLASS="span9">
-            <h1 CLASS="page-title">添加图书</h1>
+            <h2 CLASS="page-title">添加公告</h2>
 
             <div CLASS="well">
-                <ul CLASS="nav nav-tabs">
-                    <li CLASS="active"><a HREF="#home" data-toggle="tab">Profile</a></li>
-                    <li><a HREF="#profile" data-toggle="tab">Password</a></li>
-                </ul>
+                <!--<ul CLASS="nav nav-tabs">-->
+                    <!--<li CLASS="active"><a HREF="#home" data-toggle="tab">Profile</a></li>-->
+                    <!--<li><a HREF="#profile" data-toggle="tab">Password</a></li>-->
+                <!--</ul>-->
                 <div id="myTabContent" CLASS="tab-content">
                     <div CLASS="tab-pane active in" id="home">
                         <!--Form表单开始-->
-                        <form action="AddBooksServlet" method="post">
-                            <label>ISBN</label>
-                            <input TYPE="text"  CLASS="input-xlarge" name="isbn"/>
-                            <label>书名</label>
+                        <form th:action="@{/backMain/notice/postAddNotice}" method="post">
+                            <label>标题</label>
                             <input TYPE="text"  CLASS="input-xlarge" name="title"/>
-                            <label>价格</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="price"/>
-                            <label>更新时间&nbsp;&nbsp;&nbsp;</label>
+                            <label>内容</label>
+                            <input TYPE="text"  CLASS="input-xlarge" name="content"/>
+                            <label>作者</label>
+                            <input TYPE="text"  CLASS="input-xlarge"  name="author"/>
+                            <label>时间&nbsp;&nbsp;&nbsp;</label>
                             <input TYPE="text"  CLASS="input-xlarge" name="pubDt" value="时间系统自动生成" readonly="readonly"/>
-                            <label>出版社</label>
-                            <input TYPE="text" CLASS="input-xlarge" name="publisherName"/><br/>
                             <div CLASS="btn-toolbar">
                                 <input type="submit" CLASS="btn btn-primary" value="Save"/>
                                 <a HREF="#myModal" data-toggle="modal" CLASS="btn">Cancel</a>
@@ -109,15 +107,15 @@
                         </form>
                         <!--Form表单结束-->
                     </div>
-                    <div CLASS="tab-pane fade" id="profile">
-                        <form id="tab2">
-                            <label>New Password</label>
-                            <input TYPE="password" CLASS="input-xlarge"/>
-                            <div>
-                                <button CLASS="btn btn-primary">Update</button>
-                            </div>
-                        </form>
-                    </div>
+                    <!--<div CLASS="tab-pane fade" id="profile">-->
+                        <!--<form id="tab2">-->
+                            <!--<label>New Password</label>-->
+                            <!--<input TYPE="password" CLASS="input-xlarge"/>-->
+                            <!--<div>-->
+                                <!--<button CLASS="btn btn-primary">Update</button>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
                 </div>
 
             </div>

@@ -33,7 +33,7 @@ public class AdminController {
 
 
     @RequestMapping(value = "/login")
-    private String login() {
+    public String login() {
         return "login";
     }
 

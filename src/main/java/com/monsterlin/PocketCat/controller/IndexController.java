@@ -32,13 +32,26 @@ public class IndexController {
     @Resource
     PcNoticeService pcNoticeService ;
 
+
+    /**
+     * 默认的跳转
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/")
+    public String redirect(Model model) {
+        List<PcCampusJob> campusJobList = pcCampusService.getPcCampusByPage(1,1,20);
+        model.addAttribute("campusJobList", campusJobList);
+        return "index";
+    }
+
     /**
      * 额，这个主页其实的话也就是校内兼职O(∩_∩)O
      *
      * @return
      */
     @RequestMapping(value = "/index")
-    private String index(Model model) {
+    public String index(Model model) {
         List<PcCampusJob> campusJobList = pcCampusService.getPcCampusByPage(1,1,20);
         model.addAttribute("campusJobList", campusJobList);
         return "index";
@@ -49,7 +62,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping(value = "/socialjobs")
-    private String socialjobs(Model model) {
+    public String socialjobs(Model model) {
         List<PcSocialJob> socialJobList = pcSocialJobService.getPcSocialJobByPage(1,1,20);
         model.addAttribute("socialJobList", socialJobList);
         return "socialjobs";
@@ -60,7 +73,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping(value = "notice")
-    private String notice(Model model) {
+    public String notice(Model model) {
         List<PcNotice> noticeList = pcNoticeService.getPcNoticeByPage(1,15);
         model.addAttribute("noticeList", noticeList);
         return "notice";
@@ -71,14 +84,14 @@ public class IndexController {
      * @return
      */
     @RequestMapping(value = "blackjobs")
-    private String blackjobs(Model model) {
+    public String blackjobs(Model model) {
         List<PcCampusJob> campusJobList = pcCampusService.getPcCampusByPage(0,1,20);
         model.addAttribute("campusJobList", campusJobList);
         return "blackjobs";
     }
 
     @RequestMapping(value = "/login")
-    private String login() {
+    public String login() {
         return "login";
     }
 

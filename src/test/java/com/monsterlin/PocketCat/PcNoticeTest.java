@@ -30,9 +30,14 @@ public class PcNoticeTest {
     @Test
     public void testInsert() {
         long nowStamp = TimeUtil.getNowTimeStamp();
-        PcNotice pcNotice = new PcNotice("测试标题", "测试标题", "monsterlin", nowStamp, nowStamp);
-        int result = pcNoticeService.insertPcNotice(pcNotice);
-        System.out.println("影响的行数：" + result);
+
+        for (int i = 0 ; i < 3 ;i++){
+            PcNotice pcNotice = new PcNotice("测试标题"+i, "测试标题"+i, "monsterlin", nowStamp, nowStamp);
+            int result = pcNoticeService.insertPcNotice(pcNotice);
+            System.out.println("影响的行数：" + result);
+        }
+
+
     }
 
     @Test

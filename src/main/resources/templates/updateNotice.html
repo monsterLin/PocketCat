@@ -72,9 +72,9 @@
                 <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>公告</div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
                     <li><a href="/backMain">主页</a></li>
-                    <li><a href="/backMain/allNotice">公告管理</a></li>
-                    <li><a href="/backMain/addNotice">新增公告</a></li>
-                    <li class="active"><a href="/backMain/updateNotice">更新公告</a></li>
+                    <li><a href="/backMain/notice/allNotice">公告管理</a></li>
+                    <li><a href="/backMain/notice/addNotice">新增公告</a></li>
+                    <li class="active"><a href="/backMain/notice/updateNotice">更新公告</a></li>
 
                 </ul>
 
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="span9">
-            <h1 class="page-title">修改图书</h1>
+            <h2 class="page-title">更新公告</h2>
 
             <div class="well">
                 <ul class="nav nav-tabs">
@@ -102,20 +102,21 @@
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane active in" id="home">
                         <!--Form表单开始-->
-                        <c:set var="item" value="${requestScope.book}"></c:set>
-                        <form action="UpdateBooksServlet" method="post">
-                            <label>ISBN</label>
-                            <input TYPE="text" value="${item.isbn} " CLASS="input-xlarge" name="isbn" readonly="readonly"/>
-                            <label>书名</label>
-                            <input TYPE="text" value="${item.title}" CLASS="input-xlarge" name="title"/>
-                            <label>价格</label>
-                            <input TYPE="text" value="${item.price}" CLASS="input-xlarge" name="price"/>
-                            <label>更新时间</label>
-                            <input TYPE="text" value="时间系统自动生成"  CLASS="input-xlarge" name="pubDt" readonly="readonly"/>
-                            <label>图片样片</label>
-                            <input TYPE="text" value="存放路径的地方" CLASS="input-xlarge"  readonly="readonly"/>
-                            <label>出版社</label>
-                            <input TYPE="text" value="${item.publisherName}" CLASS="input-xlarge" name="publisherName"/>
+                        <form th:action="@{/backMain/notice/postUpdateNotice}" method="post" th:object="${pcNotice}">
+                            <label>Nid</label>
+                            <input TYPE="text" th:value="${pcNotice.nid}" CLASS="input-xlarge" name="nid" readonly="readonly"/>
+                            <label>标题</label>
+                            <input TYPE="text" th:value="${pcNotice.title}" CLASS="input-xlarge" name="title" />
+                            <label>内容</label>
+                            <input TYPE="text" th:value="${pcNotice.content}" CLASS="input-xlarge" name="content"/>
+                            <label>作者</label>
+                            <input TYPE="text" th:value="${pcNotice.author}" CLASS="input-xlarge" name="author"/>
+                            <label>创建时间</label>
+                            <input TYPE="text"  th:value="${#dates.format(pcNotice.createTime,'yyyy-MM-dd hh:mm:ss')}" CLASS="input-xlarge" name="createTime" readonly="readonly"/>
+
+                            <label>上次更新时间</label>
+                            <input TYPE="text"  th:value="${#dates.format(pcNotice.updateTime,'yyyy-MM-dd hh:mm:ss')}" CLASS="input-xlarge" name="updateTime" readonly="readonly"/>
+
                             <div CLASS="btn-toolbar">
                                 <input type="submit" CLASS="btn btn-primary" value="Save"/>
                                 <a HREF="#myModal" data-toggle="modal" CLASS="btn">Cancel</a>

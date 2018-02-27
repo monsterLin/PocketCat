@@ -69,9 +69,9 @@
                 </div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
                     <li><a href="/backMain">主页</a></li>
-                    <li class="active"><a href="/backMain/allNotice">公告管理</a></li>
-                    <li><a href="/backMain/addNotice">新增公告</a></li>
-                    <li><a href="/backMain/updateNotice">更新公告</a></li>
+                    <li class="active"><a href="/backMain/notice/allNotice">公告管理</a></li>
+                    <li><a href="/backMain/notice/addNotice">新增公告</a></li>
+                    <li ><a href="/backMain/notice/updateNotice">更新公告</a></li>
 
                 </ul>
 
@@ -93,63 +93,52 @@
             </div>
         </div>
         <div class="span9">
-            <h1 class="page-title">图书列表</h1>
-            <div class="btn-toolbar">
-                <a href="add-books.jsp">
-                    <button class="btn btn-primary"><i class="icon-plus"></i> 添加图书</button>
-                </a>
-                <button class="btn">导入图书</button>
-                <button class="btn">导出图书</button>
-                <div class="btn-group">
-                </div>
-            </div>
+            <h2 class="page-title">公告列表</h2>
+
             <div class="well">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>ISBN</th>
-                        <th>书名</th>
-                        <th>价格</th>
+                        <th>NID</th>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>作者</th>
+                        <th>创建时间</th>
                         <th>更新时间</th>
-                        <th>图书样片</th>
-                        <th>出版社</th>
                         <th style="width: 26px;"></th>
                     </tr>
                     </thead>
                     <!--循环开始-->
                     <tbody>
-                    <c:set var="BooksList" value="${requestScope.BooksList}"></c:set>
-                    <c:forEach items="${BooksList}" var="item">
-                        <tr>
-                            <td>${item.isbn}</td>
-                            <td>${item.title}</td>
-                            <td>${item.price}</td>
-                            <td>${item.pubDt}</td>
-                            <td>图片收集中</td>
-                            <td>${item.publisherName}</td>
+                        <tr th:each="pcNotice : ${pcNoticeList}">
+                            <td th:text="${pcNotice.nid}"></td>
+                            <td th:text="${pcNotice.title}"></td>
+                            <td th:text="${pcNotice.content}"></td>
+                            <td th:text="${pcNotice.author}"></td>
+                            <td th:text="${#dates.format(pcNotice.createTime,'yyyy-MM-dd')}"></td>
+                            <td th:text="${#dates.format(pcNotice.updateTime,'yyyy-MM-dd')}"></td>
                             <td>
                                 <!--商品信息更改和删除开始-->
-                                <a href="QueryBooksByIdServlet?isbn=${item.isbn}"><i class="icon-pencil"></i></a>
-                                <a href="DeleteBooksServlet?isbn=${item.isbn}" role="button" data-toggle="modal"><i
+                                <a th:href="@{/backMain/notice/getNoticeByNid(nid=${pcNotice.getNid()})}"><i class="icon-pencil"></i></a>
+                                <a th:href="@{/backMain/notice/deleteNotice(nid=${pcNotice.getNid()})}" role="button" data-toggle="modal"><i
                                         class="icon-remove"></i></a>
                                 <!--商品信息更改和删除结束-->
                             </td>
                         </tr>
-                    </c:forEach>
                     </tbody>
                     <!--循环结束-->
                 </table>
             </div>
-            <div class="pagination">
-                <ul>
-                    <li><a href="#">Prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </div>
+            <!--<div class="pagination">-->
+                <!--<ul>-->
+                    <!--<li><a href="#">Prev</a></li>-->
+                    <!--<li><a href="#">1</a></li>-->
+                    <!--<li><a href="#">2</a></li>-->
+                    <!--<li><a href="#">3</a></li>-->
+                    <!--<li><a href="#">4</a></li>-->
+                    <!--<li><a href="#">Next</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
 
             <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
@@ -175,10 +164,6 @@
         <p>&copy; 2015 <a href="#">monsterlin</a></p>
     </footer>
 
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script th:src="@{/lib/bootstrap/js/bootstrap.js}"></script>
 </div>
 </body>

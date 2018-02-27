@@ -1,7 +1,13 @@
 package com.monsterlin.PocketCat.controller;
 
+import com.monsterlin.PocketCat.domain.PcNotice;
+import com.monsterlin.PocketCat.service.PcNoticeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author : monsterlin
@@ -11,27 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date : 2018/2/27
  */
 @Controller
-@RequestMapping("/backMain")
+@RequestMapping(value = "/backMain")
 public class BackMainController {
 
     @RequestMapping(value = "")
-    private String backMain(){
+    public String backMain(){
         return "backMain";
     }
 
-    @RequestMapping(value = "allNotice")
-    private String allNotice(){
-        return "allNotice";
-    }
 
-    @RequestMapping(value = "addNotice")
-    private String addNotice(){
-        return "addNotice";
-    }
-
-    @RequestMapping(value = "updateNotice")
-    private String updateNotice(){
-        return "updateNotice";
-    }
 
 }
