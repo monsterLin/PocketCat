@@ -1,13 +1,7 @@
 package com.monsterlin.PocketCat.controller;
 
-import com.monsterlin.PocketCat.domain.PcNotice;
-import com.monsterlin.PocketCat.service.PcNoticeService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author : monsterlin
