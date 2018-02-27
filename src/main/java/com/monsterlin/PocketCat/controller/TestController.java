@@ -13,32 +13,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
-    @RequestMapping(value = "/add")
-    private String add() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/all")
-    private String all() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/index")
-    private String index() {
-        return "index";
-    }
-
-
-    @RequestMapping(value = "/login")
-    private String login() {
-        return "index";
-    }
-
-
-    @RequestMapping(value = "/update")
-    private String update() {
-        return "index";
-    }
-
 
 }

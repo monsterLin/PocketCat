@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<title>通知公告</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+	<body>
+		<div class="clearfix nav">
+			<div class="campus fl">
+				<a href="index.html">校园兼职</a>
+			</div>
+			<div class="clearfix fr n_list">
+				<a href="login">管理员登录</a>
+				<a href="blackjobs">小黑屋</a>
+				<a href="notice">通知公告</a>
+				<a href="socialjobs">校外兼职</a>
+				<a href="index">校内兼职</a>
+			</div>
+		</div>
+		<div class="box clearfix">
+			<div class="fl j_list">
+				<ul>
+					<a href="#" class="clearfix" th:each="notice : ${noticeList}">
+						<div class="fl w_wen">
+							<h3 th:text="${notice.title}"></h3>
+							<p th:text = "${#dates.format(notice.updateTime,'yyyy-MM-dd')} + '发布人：' + ${notice.author}"></p>
+							<br/>
+							<p th:text="${notice.content}"></p>
+						</div>
+					</a>
+				</ul>
+			</div>
+			<div class="fr img_list">
+				<ul>
+					<li>
+						<img src="images/1.png" />
+					</li>
+					<li>
+						<img src="images/2.png" />
+					</li>
+					<li>
+						<img src="images/3.png" />
+					</li>
+					<li>
+						<img src="images/4.png" />
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="foot">
+			<p> © 2018, monsterlin Tech. All Rights Reserved</p>
+		</div>
+	</body>
+</html>

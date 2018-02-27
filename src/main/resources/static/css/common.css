@@ -1,0 +1,70 @@
+@charset "utf-8";body,dd,div,dl,dt,fieldset,figure,form,h1,h2,h3,h4,h5,h6,input,li,ol,p,td,textarea,th,ul{margin:0;padding:0;box-sizing:border-box}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+:focus{outline:0}
+a,a:hover,a:active,a:visited,a:link{text-decoration:none}
+a{-webkit-tap-highlight-color:transparent}
+button,fieldset,img{border:0}
+ol,ul{list-style:none}
+li {list-style-type:none;}
+table{border-collapse:collapse;border-spacing:0}
+h1,h2,h4,h5,h6{font-size:100%;font-weight:400}
+button,input,select,textarea{font-size:100%;font-family:inherit;resize:none}
+input[type="text"],input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none !important;border-radius: 0;}
+textarea,button {  -webkit-appearance: none !important;}
+table{border-collapse:collapse;border-spacing:0}
+.clearfix:after,.clearfix:before{content:"";display:table;border-collapse:collapse}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+body,div,fieldset,form,h1,h2,h3,h4,h5,h6,html,p{-webkit-text-size-adjust:100%}
+body{color: #000;font:12px/1.5 "微软雅黑",Arial,"宋体";min-width:320px;background-color: #f1f1f1;}
+img{vertical-align:middle;border: 0;}
+em,i{font-style:normal}
+s{text-decoration:none}
+.fl{float:left}
+.fr{float:right}
+.b{font-weight:bold}
+.pr{position:relative}
+.poa{position:absolute}
+.tl{text-align:left}
+.tr{text-align:right}
+.tc{text-align:center}
+.dhsl{overflow:hidden;text-overflow:ellipsis;white-space: nowrap;}
+.dhsl_duohang{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.none{display:none}
+.block{display:block}
+.action{color: #FF0000;}
+/*公共底部*/
+.base{position:fixed;width:100%;height:50px;max-width: 640px; background-color: #fefefe;bottom:0;}
+.base .base_box{position:absolute;width:100%; margin: 0 auto !important;}
+.base .base_box a{position:relative;display: block; width: 25%;height:50px;margin: o auto;float: left;text-align: center;font-size: 22px;color: #686868;}
+.base .base_box a span{width:100%;margin: 0 auto;font-size: 12px;display: block;height:24px;line-height: 10px;}
+.base .base_box a:hover{color: #eb413b;}
+.base .base_box .active{color: #eb413b;}
+/*公共头部*/
+
+/*矢量图标*/
+@font-face {font-family: "iconfont";
+  src: url('../font/iconfont.eot?t=1499752877682'); /* IE9*/
+  src: url('../font/iconfont.eot?t=1499752877682#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/iconfont.woff?t=1499752877682') format('woff'), /* chrome, firefox */
+  url('../font/iconfont.ttf?t=1499752877682') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../font/iconfont.svg?t=1499752877682#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+
+.icon-dingwei:before { content: "\e60d"; }
+
+.icon-shouye:before { content: "\e633"; }
+
+.icon-wode2:before { content: "\e61e"; }
+
+.icon-miaoshucopy:before { content: "\e623"; }
+
+
+
