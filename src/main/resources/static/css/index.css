@@ -22,7 +22,7 @@ h5{
 .w_wen p{height:32px;line-height:32px;display:inline-block;}
 .z_wei h3{height:35px;line-height:35px;font-size:18px;color:#6461DD;}
 .z_wei p{height:32px;line-height:32px;display:inline-block;width:100%;}
-.w_zi{width:50%;text-align: right;}
+.w_zi{width:50%;text-align: right;position:relative;}
 .w_zi p{height:32px;line-height:32px;color:#999999;}
 .w_zi .day{color:#ff6600;}
 .img_list{width:27%;}
@@ -40,3 +40,5 @@ display:inline-block;width:100%;}
 .biao_list{width:50%;}
 .biao_list a{display:inline-block;height:40px;width:100px;line-height:40px;border:1px solid #29da9e;text-align:center;color:#29da9e;float:right;margin:0 5px;}
 
+.s_img{position:absolute;right:0;top:0;}
+.s_img img{width:100%;}
