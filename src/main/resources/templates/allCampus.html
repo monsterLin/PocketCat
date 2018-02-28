@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>公告管理</title>
+    <title>校内兼职</title>
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/lib/bootstrap/css/bootstrap.css}"/>
@@ -69,7 +69,7 @@
                 </div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
                     <li><a th:href="@{/backMain/}">主页</a></li>
-                    <li class="active"><a th:href="@{/backMain/notice/allNotice}">公告管理</a></li>
+                    <li ><a th:href="@{/backMain/notice/allNotice}">公告管理</a></li>
                     <li><a th:href="@{/backMain/notice/addNotice}">新增公告</a></li>
                     <li><a th:href="@{/backMain/notice/updateNotice}">更新公告</a></li>
 
@@ -80,8 +80,8 @@
                         class="icon-exclamation-sign"></i>校内兼职
                 </div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
-                    <li><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
-                    <li><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
+                    <li class="active"><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
+                    <li ><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
                     <li><a th:href="@{/backMain/campusJob/updateCampusJob}">更新兼职</a></li>
                 </ul>
 
@@ -93,34 +93,40 @@
             </div>
         </div>
         <div class="span9">
-            <h2 class="page-title">公告列表</h2>
+            <h2 class="page-title">兼职列表</h2>
 
             <div class="well">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>NID</th>
+                        <th>JID</th>
                         <th>标题</th>
                         <th>内容</th>
                         <th>作者</th>
-                        <th>创建时间</th>
-                        <th>更新时间</th>
+                        <th>价格</th>
+                        <th>地点</th>
+                        <th>状态</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
                         <th style="width: 26px;"></th>
                     </tr>
                     </thead>
                     <!--循环开始-->
                     <tbody>
-                        <tr th:each="pcNotice : ${pcNoticeList}">
-                            <td th:text="${pcNotice.nid}"></td>
-                            <td th:text="${pcNotice.title}"></td>
-                            <td th:text="${pcNotice.content}"></td>
-                            <td th:text="${pcNotice.author}"></td>
-                            <td th:text="${#dates.format(pcNotice.createTime,'yyyy-MM-dd')}"></td>
-                            <td th:text="${#dates.format(pcNotice.updateTime,'yyyy-MM-dd')}"></td>
+                        <tr th:each="pcCampusJob : ${pcCampusJobList}">
+                            <td th:text="${pcCampusJob.jid}"></td>
+                            <td th:text="${pcCampusJob.title}"></td>
+                            <td th:text="${pcCampusJob.content}"></td>
+                            <td th:text="${pcCampusJob.author}"></td>
+                            <td th:text="${pcCampusJob.price}"></td>
+                            <td th:text="${pcCampusJob.place}"></td>
+                            <td th:text="${pcCampusJob.getstate()}"></td>
+                            <td th:text="${#dates.format(pcCampusJob.beginTime,'yyyy-MM-dd')}"></td>
+                            <td th:text="${#dates.format(pcCampusJob.endTime,'yyyy-MM-dd')}"></td>
                             <td>
                                 <!--商品信息更改和删除开始-->
-                                <a th:href="@{/backMain/notice/getNoticeByNid(nid=${pcNotice.getNid()})}"><i class="icon-pencil"></i></a>
-                                <a th:href="@{/backMain/notice/deleteNotice(nid=${pcNotice.getNid()})}" role="button" data-toggle="modal"><i
+                                <a th:href="@{/backMain/campusJob/getCampusByJid(jid=${pcCampusJob.getJid()})}"><i class="icon-pencil"></i></a>
+                                <a th:href="@{/backMain/campusJob/deleteCampusJob(jid=${pcCampusJob.getJid()})}" role="button" data-toggle="modal"><i
                                         class="icon-remove"></i></a>
                                 <!--商品信息更改和删除结束-->
                             </td>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>添加公告</title>
+    <title>添加校内兼职</title>
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/lib/bootstrap/css/bootstrap.css}"/>
@@ -62,7 +62,7 @@
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
                     <li><a th:href="@{/backMain/}">主页</a></li>
                     <li ><a th:href="@{/backMain/notice/allNotice}">公告管理</a></li>
-                    <li class="active"><a th:href="@{/backMain/notice/addNotice}">新增公告</a></li>
+                    <li ><a th:href="@{/backMain/notice/addNotice}">新增公告</a></li>
                     <li><a th:href="@{/backMain/notice/updateNotice}">更新公告</a></li>
 
                 </ul>
@@ -70,7 +70,7 @@
                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu"><i class="icon-exclamation-sign"></i>校内兼职</div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
                     <li><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
-                    <li><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
+                    <li class="active"><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
                     <li><a th:href="@{/backMain/campusJob/updateCampusJob}">更新兼职</a></li>
                 </ul>
 
@@ -81,7 +81,7 @@
             </div>
         </div>
         <div CLASS="span9">
-            <h2 CLASS="page-title">添加公告</h2>
+            <h2 CLASS="page-title">添加校内兼职</h2>
 
             <div CLASS="well">
                 <!--<ul CLASS="nav nav-tabs">-->
@@ -91,14 +91,24 @@
                 <div id="myTabContent" CLASS="tab-content">
                     <div CLASS="tab-pane active in" id="home">
                         <!--Form表单开始-->
-                        <form th:action="@{/backMain/notice/postAddNotice}" method="post">
+                        <form th:action="@{/backMain/campusJob/postAddCampusJob}" method="post">
                             <label>标题</label>
                             <input TYPE="text"  CLASS="input-xlarge" name="title"/>
                             <label>内容</label>
                             <input TYPE="text"  CLASS="input-xlarge" name="content"/>
                             <label>作者</label>
                             <input TYPE="text"  CLASS="input-xlarge"  name="author"/>
-                            <label>时间&nbsp;&nbsp;&nbsp;</label>
+                            <label>价格</label>
+                            <input TYPE="text"  CLASS="input-xlarge"  name="price"/>
+                            <label>地点</label>
+                            <input TYPE="text"  CLASS="input-xlarge"  name="place"/>
+                            <label>状态</label>
+                            <input TYPE="text"  CLASS="input-xlarge"  name="state" placeholder="1：不加入小黑屋  2 ：加入小黑屋"/>
+                            <label>开始时间</label>
+                            <input TYPE="text"  CLASS="input-xlarge"  name="beginTime" placeholder="eg: 2018-02-28 14:06:48"/>
+                            <label>结束时间</label>
+                            <input TYPE="text"  CLASS="input-xlarge"  name="endTime" placeholder="eg: 2018-02-28 14:06:48"/>
+                            <label>当前时间&nbsp;&nbsp;&nbsp;</label>
                             <input TYPE="text"  CLASS="input-xlarge" name="pubDt" value="时间系统自动生成" readonly="readonly"/>
                             <div CLASS="btn-toolbar">
                                 <input type="submit" CLASS="btn btn-primary" value="Save"/>

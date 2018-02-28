@@ -30,7 +30,6 @@ public class NoticeController {
     public String allNotice(Model model) {
         List<PcNotice> pcNoticeList = pcNoticeService.getPcNoticeByPage(1,20);
         model.addAttribute("pcNoticeList",pcNoticeList);
-        model.addAttribute("aa","aa");
         return "allNotice";
     }
 
@@ -87,8 +86,6 @@ public class NoticeController {
            pcNotice.setAuthor(author);
            pcNotice.setCreateTime(createStamp);
            pcNotice.setUpdateTime(nowStamp);
-
-
            int result = pcNoticeService.updatePcNotice(pcNotice);
            if (result!=0){
                return "redirect:/backMain/notice/allNotice";
@@ -96,13 +93,9 @@ public class NoticeController {
                return "redirect:/backMain/notice/updateNotice";
            }
 
-
        }else {
            return "redirect:/backMain/notice/updateNotice";
        }
-
-
-
     }
 
     @RequestMapping(value = "/getNoticeByNid")
