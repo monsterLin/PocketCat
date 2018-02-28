@@ -22,7 +22,7 @@
 		<div class="box clearfix">
 			<div class="fl j_list">
 				<ul>
-					<a href="detail.html" class="clearfix" th:each="campusJob : ${campusJobList}">
+					<a th:href="@{/campus/campusDetail(jid=${campusJob.jid})}" class="clearfix" th:each="campusJob : ${campusJobList}">
 						<div class="fl wen">
 							<h4 th:text="${campusJob.title}"></h4>
 							<h5 th:text="${campusJob.content}"></h5>

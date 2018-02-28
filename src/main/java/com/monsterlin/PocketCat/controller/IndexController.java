@@ -57,6 +57,17 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping(value = "/campus/campusDetail")
+    public String campusDetail(Model model , int jid){
+        PcCampusJob pcCampusJob = pcCampusService.getPcCampusJobByJid(jid);
+        if (pcCampusJob!=null){
+            model.addAttribute("pcCampusJob",pcCampusJob);
+            return "detail";
+        }else {
+            return "";
+        }
+    }
+
     /**
      * 校外兼职
      * @return
@@ -94,5 +105,6 @@ public class IndexController {
     public String login() {
         return "login";
     }
+
 
 }
