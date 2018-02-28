@@ -58,7 +58,7 @@
                 </li>
 
             </ul>
-            <a class="brand" href="backMain.html"><span class="first">Online</span> <span class="second">Shop</span></a>
+            <a class="brand" th:href="@{/backMain/}" ><span class="first">Online</span> <span class="second">Shop</span></a>
         </div>
     </div>
 </div>
@@ -71,10 +71,10 @@
             <div class="sidebar-nav">
                 <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>公告</div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
-                    <li><a href="/backMain">主页</a></li>
-                    <li><a href="/backMain/notice/allNotice">公告管理</a></li>
-                    <li><a href="/backMain/notice/addNotice">新增公告</a></li>
-                    <li class="active"><a href="/backMain/notice/updateNotice">更新公告</a></li>
+                    <li><a th:href="@{/backMain/}">主页</a></li>
+                    <li ><a th:href="@{/backMain/notice/allNotice}">公告管理</a></li>
+                    <li><a th:href="@{/backMain/notice/addNotice}">新增公告</a></li>
+                    <li class="active"><a th:href="@{/backMain/notice/updateNotice}">更新公告</a></li>
 
                 </ul>
 

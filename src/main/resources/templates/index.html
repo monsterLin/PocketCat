@@ -3,20 +3,20 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>校内兼职</title>
-		<link rel="stylesheet" type="text/css" href="css/common.css" />
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 	</head>
 	<body>
 		<div class="clearfix nav">
 			<div class="campus fl">
-				<a href="index.html">校园兼职</a>
+				<a th:href="@{/index}">校园兼职</a>
 			</div>
 			<div class="clearfix fr n_list">
-				<a href="login">管理员登录</a>
-				<a href="blackjobs">小黑屋</a>
-				<a href="notice">通知公告</a>
-				<a href="socialjobs">校外兼职</a>
-				<a href="index">校内兼职</a>
+				<a th:href="@{/login}">管理员登录</a>
+				<a th:href="@{/blackjobs}">小黑屋</a>
+				<a th:href="@{/notice}">通知公告</a>
+				<a th:href="@{/socialjobs}">校外兼职</a>
+				<a th:href="@{/index}">校内兼职</a>
 			</div>
 		</div>
 		<div class="box clearfix">

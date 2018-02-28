@@ -3,12 +3,16 @@ package com.monsterlin.PocketCat.controller;
 import com.monsterlin.PocketCat.domain.PcCampusJob;
 import com.monsterlin.PocketCat.domain.PcNotice;
 import com.monsterlin.PocketCat.domain.PcSocialJob;
+import com.monsterlin.PocketCat.mail.MailService;
 import com.monsterlin.PocketCat.service.PcCampusService;
 import com.monsterlin.PocketCat.service.PcNoticeService;
 import com.monsterlin.PocketCat.service.PcSocialJobService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -32,6 +36,11 @@ public class IndexController {
     @Resource
     PcNoticeService pcNoticeService ;
 
+    @Resource
+    MailService mailService ;
+
+    @Autowired
+    private TemplateEngine templateEngine;
 
     /**
      * 默认的跳转
@@ -63,6 +72,24 @@ public class IndexController {
         if (pcCampusJob!=null){
             model.addAttribute("pcCampusJob",pcCampusJob);
             return "detail";
+        }else {
+            return "";
+        }
+    }
+
+    @RequestMapping(value = "/campus/sendDetailEmail")
+    public String sendDetailEmail(int jid){
+        PcCampusJob pcCampusJob = pcCampusService.getPcCampusJobByJid(jid);
+        if (pcCampusJob!=null){
+
+            Context context = new Context();
+            context.setVariable("pcCampusJob", pcCampusJob);
+            String emailContent = templateEngine.process("emailTemplate", context);
+
+            mailService.sendHtmlMail("876948462@qq.com","校园兼职职位详情",emailContent);
+
+            return "detail";
+
         }else {
             return "";
         }

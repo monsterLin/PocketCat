@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>职位详情</title>
+    <link rel="stylesheet" type="text/css" href="http://oszh5svp5.bkt.clouddn.com/common.css"/>
+    <link rel="stylesheet" type="text/css" href="http://oszh5svp5.bkt.clouddn.com/mail.css"/>
+
+    <style>
+
+        a{ text-decoration:none}
+
+        .box {
+            width: 1200px;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+
+        .clearfix:after, .clearfix:before {
+            content: "";
+            display: table;
+            border-collapse: collapse
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+        .clearfix {
+            zoom: 1
+        }
+
+        .biaoti h4 {
+            font-size: 18px;
+            color: #333333;
+            padding: 0 2%;
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .biaoti h4 span {
+            color: #ff6600;
+        }
+
+        .biaoti .x_qing {
+            padding: 0 2%;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .biaoti .x_qing {
+            padding: 0 2%;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .x_qing span {
+            margin: 0 5px;
+        }
+
+        .x_qing span s {
+            color: #6a67e0;
+            margin-right: 3px;
+        }
+
+        .fl {
+            float: left
+        }
+
+        .z_wei h3 {
+            height: 35px;
+            line-height: 35px;
+            font-size: 18px;
+            color: #6461DD;
+        }
+
+        .z_wei p {
+            height: 32px;
+            line-height: 32px;
+            display: inline-block;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box clearfix" th:object="${pcCampusJob}">
+
+    <h2>
+        &nbsp;<a th:text="${pcCampusJob.title}"></a>
+    </h2>
+    <div class="clearfix x_qing">
+        <span><s class="iconfont icon-dingwei"></s><a th:text="${pcCampusJob.place}"></a></span>
+        <span><s class="iconfont icon-miaoshucopy"></s><a th:text="${pcCampusJob.price}"></a></span>
+        <span><s class="iconfont icon-wode2"></s><a th:text="${pcCampusJob.author}"></a></span>
+        <!--<span><s class="iconfont icon-shouye"></s><a th:text="${#dates.format(pcCampusJob.beginTime,'yyyy-MM-dd')}-->
+                                     <!--+' &nbsp;-&nbsp; ' +${#dates.format(pcCampusJob.endTime,'yyyy-MM-dd')}" ></a></span>-->
+    </div>
+
+    <div class="fl j_list">
+        <ul>
+            <a href="#" class="clearfix">
+                <div class="fl z_wei">
+                    <h3>职位描述</h3>
+                    <p th:text="${pcCampusJob.content}"></p>
+                </div>
+            </a>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>
