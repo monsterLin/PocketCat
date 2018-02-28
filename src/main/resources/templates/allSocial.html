@@ -53,7 +53,8 @@
                 </li>
 
             </ul>
-            <a class="brand" th:href="@{/backMain}"><span class="first">Online</span> <span class="second">Shop</span></a>
+            <a class="brand" th:href="@{/backMain}"><span class="first">Online</span> <span
+                    class="second">Shop</span></a>
         </div>
     </div>
 </div>
@@ -69,7 +70,7 @@
                 </div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
                     <li><a th:href="@{/backMain/}">主页</a></li>
-                    <li ><a th:href="@{/backMain/notice/allNotice}">公告管理</a></li>
+                    <li><a th:href="@{/backMain/notice/allNotice}">公告管理</a></li>
                     <li><a th:href="@{/backMain/notice/addNotice}">新增公告</a></li>
                     <li><a th:href="@{/backMain/notice/updateNotice}">更新公告</a></li>
 
@@ -96,81 +97,89 @@
         <div class="span9">
             <h2 class="page-title">兼职列表</h2>
 
-            <div class="well">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>JID</th>
-                        <th>标题</th>
-                        <th>地点</th>
-                        <th>时间</th>
-                        <th>价格</th>
-                        <th>来源</th>
-                        <th>状态</th>
-                        <th>抓取时间</th>
-                        <th style="width: 26px;"></th>
-                    </tr>
-                    </thead>
-                    <!--循环开始-->
-                    <tbody>
-                        <tr th:each="pcSocialJob : ${pcSocialJobList}">
-                            <td th:text="${pcSocialJob.jid}"></td>
-                            <td th:text="${pcSocialJob.title}"></td>
-                            <td th:text="${pcSocialJob.place}"></td>
-                            <td th:text="${pcSocialJob.time}"></td>
-                            <td th:text="${pcSocialJob.price}"></td>
-                            <td th:text="${pcSocialJob.source}"></td>
-                            <td th:text="${pcSocialJob.getstate()}"></td>
-                            <td th:text="${#dates.format(pcSocialJob.created,'yyyy-MM-dd')}"></td>
-
-                            <td>
-                                <!--商品信息更改和删除开始-->
-                                <a th:href="@{/backMain/socialJob/getSocialJob(jid=${pcSocialJob.getJid()})}"><i class="icon-pencil"></i></a>
-                                <a th:href="@{/backMain/socialJob/deleteSocialJob(jid=${pcSocialJob.getJid()})}" role="button" data-toggle="modal"><i
-                                        class="icon-remove"></i></a>
-                                <!--商品信息更改和删除结束-->
-                            </td>
-                        </tr>
-                    </tbody>
-                    <!--循环结束-->
-                </table>
-            </div>
-            <!--<div class="pagination">-->
-                <!--<ul>-->
-                    <!--<li><a href="#">Prev</a></li>-->
-                    <!--<li><a href="#">1</a></li>-->
-                    <!--<li><a href="#">2</a></li>-->
-                    <!--<li><a href="#">3</a></li>-->
-                    <!--<li><a href="#">4</a></li>-->
-                    <!--<li><a href="#">Next</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-
-            <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Delete Confirmation</h3>
-                </div>
-                <div class="modal-body">
-                    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete
-                        the user?</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
-                </div>
+            <div class="btn-toolbar">
+                <a th:href="@{/backMain/socialJob/startCrawler}">
+                    <button class="btn btn-primary"> 爬虫启动</button>
+                </a>
             </div>
 
+        <div class="well">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>JID</th>
+                    <th>标题</th>
+                    <th>地点</th>
+                    <th>时间</th>
+                    <th>价格</th>
+                    <th>来源</th>
+                    <th>状态</th>
+                    <th>抓取时间</th>
+                    <th style="width: 26px;"></th>
+                </tr>
+                </thead>
+                <!--循环开始-->
+                <tbody>
+                <tr th:each="pcSocialJob : ${pcSocialJobList}">
+                    <td th:text="${pcSocialJob.jid}"></td>
+                    <td th:text="${pcSocialJob.title}"></td>
+                    <td th:text="${pcSocialJob.place}"></td>
+                    <td th:text="${pcSocialJob.time}"></td>
+                    <td th:text="${pcSocialJob.price}"></td>
+                    <td th:text="${pcSocialJob.source}"></td>
+                    <td th:text="${pcSocialJob.getstate()}"></td>
+                    <td th:text="${#dates.format(pcSocialJob.created,'yyyy-MM-dd')}"></td>
+
+                    <td>
+                        <!--商品信息更改和删除开始-->
+                        <a th:href="@{/backMain/socialJob/getSocialJob(jid=${pcSocialJob.getJid()})}"><i
+                                class="icon-pencil"></i></a>
+                        <a th:href="@{/backMain/socialJob/deleteSocialJob(jid=${pcSocialJob.getJid()})}" role="button"
+                           data-toggle="modal"><i
+                                class="icon-remove"></i></a>
+                        <!--商品信息更改和删除结束-->
+                    </td>
+                </tr>
+                </tbody>
+                <!--循环结束-->
+            </table>
         </div>
+        <!--<div class="pagination">-->
+        <!--<ul>-->
+        <!--<li><a href="#">Prev</a></li>-->
+        <!--<li><a href="#">1</a></li>-->
+        <!--<li><a href="#">2</a></li>-->
+        <!--<li><a href="#">3</a></li>-->
+        <!--<li><a href="#">4</a></li>-->
+        <!--<li><a href="#">Next</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+
+        <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Delete Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete
+                    the user?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+
     </div>
+</div>
 
 
-    <footer>
-        <p>&copy; 2015 <a href="#">monsterlin</a></p>
-    </footer>
+<footer>
+    <p>&copy; 2015 <a href="#">monsterlin</a></p>
+</footer>
 
-    <script th:src="@{/lib/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/lib/bootstrap/js/bootstrap.js}"></script>
 </div>
 </body>
 </html>

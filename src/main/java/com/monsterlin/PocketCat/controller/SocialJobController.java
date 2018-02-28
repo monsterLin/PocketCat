@@ -1,6 +1,7 @@
 package com.monsterlin.PocketCat.controller;
 
 import com.monsterlin.PocketCat.domain.PcSocialJob;
+import com.monsterlin.PocketCat.grab.GrabSocialJobs;
 import com.monsterlin.PocketCat.service.PcSocialJobService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +55,17 @@ public class SocialJobController {
         }else {
             return "redirect:/backMain/socialJob/allSocialJob";
         }
+    }
 
+    @RequestMapping(value = "/startCrawler")
+    public String startCrawler(){
+
+        List<PcSocialJob> pcSocialJobList = GrabSocialJobs.grabTopPartJobs();
+
+        for (PcSocialJob pcSocialJob : pcSocialJobList) {
+            pcSocialJobService.insertPcSocialJob(pcSocialJob);
+        }
+
+        return "redirect:/backMain/socialJob/allSocialJob";
     }
 }
