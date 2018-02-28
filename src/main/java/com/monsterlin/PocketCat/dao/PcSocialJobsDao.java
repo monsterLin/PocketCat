@@ -51,4 +51,14 @@ public interface PcSocialJobsDao {
     @Delete("DELETE FROM pc_social_jobs where jid = #{jid}")
     int deletePcSocialJob(@Param("jid") int jid);
 
+
+    /**
+     * 根据id查询兼职
+     * @param jid
+     * @return
+     */
+    @Select("SELECT * FROM pc_social_jobs where jid = #{jid}")
+    PcSocialJob getPcSocialJobByJid ( int jid );
+
+
 }

@@ -43,4 +43,11 @@ public interface PcSocialJobService {
      * @return
      */
     int deletePcSocialJob(int jid);
+
+    /**
+     * 根据id查询兼职
+     * @param jid
+     * @return
+     */
+    PcSocialJob getPcSocialJob(int jid);
 }

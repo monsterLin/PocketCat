@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>校内兼职</title>
+    <title>兼职管理</title>
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/lib/bootstrap/css/bootstrap.css}"/>
@@ -80,15 +80,15 @@
                         class="icon-exclamation-sign"></i>校内兼职
                 </div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
-                    <li class="active"><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
-                    <li ><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
+                    <li><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
+                    <li><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
                     <li><a th:href="@{/backMain/campusJob/updateCampusJob}">更新兼职</a></li>
                 </ul>
 
                 <div class="nav-header" data-toggle="collapse" data-target="#legal-menu"><i class="icon-legal"></i>校外兼职
                 </div>
                 <ul id="legal-menu" class="nav nav-list collapse in">
-                    <li><a th:href="@{/backMain/socialJob/allSocialJob}">兼职管理</a></li>
+                    <li class="active"><a th:href="@{/backMain/socialJob/allSocialJob}">兼职管理</a></li>
                     <li><a th:href="@{/backMain/socialJob/socialDetail}">兼职详情</a></li>
                 </ul>
             </div>
@@ -102,32 +102,31 @@
                     <tr>
                         <th>JID</th>
                         <th>标题</th>
-                        <th>内容</th>
-                        <th>作者</th>
-                        <th>价格</th>
                         <th>地点</th>
+                        <th>时间</th>
+                        <th>价格</th>
+                        <th>来源</th>
                         <th>状态</th>
-                        <th>开始时间</th>
-                        <th>结束时间</th>
+                        <th>抓取时间</th>
                         <th style="width: 26px;"></th>
                     </tr>
                     </thead>
                     <!--循环开始-->
                     <tbody>
-                        <tr th:each="pcCampusJob : ${pcCampusJobList}">
-                            <td th:text="${pcCampusJob.jid}"></td>
-                            <td th:text="${pcCampusJob.title}"></td>
-                            <td th:text="${pcCampusJob.content}"></td>
-                            <td th:text="${pcCampusJob.author}"></td>
-                            <td th:text="${pcCampusJob.price}"></td>
-                            <td th:text="${pcCampusJob.place}"></td>
-                            <td th:text="${pcCampusJob.getstate()}"></td>
-                            <td th:text="${#dates.format(pcCampusJob.beginTime,'yyyy-MM-dd')}"></td>
-                            <td th:text="${#dates.format(pcCampusJob.endTime,'yyyy-MM-dd')}"></td>
+                        <tr th:each="pcSocialJob : ${pcSocialJobList}">
+                            <td th:text="${pcSocialJob.jid}"></td>
+                            <td th:text="${pcSocialJob.title}"></td>
+                            <td th:text="${pcSocialJob.place}"></td>
+                            <td th:text="${pcSocialJob.time}"></td>
+                            <td th:text="${pcSocialJob.price}"></td>
+                            <td th:text="${pcSocialJob.source}"></td>
+                            <td th:text="${pcSocialJob.getstate()}"></td>
+                            <td th:text="${#dates.format(pcSocialJob.created,'yyyy-MM-dd')}"></td>
+
                             <td>
                                 <!--商品信息更改和删除开始-->
-                                <a th:href="@{/backMain/campusJob/getCampusByJid(jid=${pcCampusJob.getJid()})}"><i class="icon-pencil"></i></a>
-                                <a th:href="@{/backMain/campusJob/deleteCampusJob(jid=${pcCampusJob.getJid()})}" role="button" data-toggle="modal"><i
+                                <a th:href="@{/backMain/socialJob/getSocialJob(jid=${pcSocialJob.getJid()})}"><i class="icon-pencil"></i></a>
+                                <a th:href="@{/backMain/socialJob/deleteSocialJob(jid=${pcSocialJob.getJid()})}" role="button" data-toggle="modal"><i
                                         class="icon-remove"></i></a>
                                 <!--商品信息更改和删除结束-->
                             </td>

@@ -44,4 +44,9 @@ public class PcSocialJobServiceImpl implements PcSocialJobService {
         return pcSocialJobsDao.deletePcSocialJob(jid);
     }
 
+    @Override
+    public PcSocialJob getPcSocialJob(int jid) {
+        return pcSocialJobsDao.getPcSocialJobByJid(jid);
+    }
+
 }

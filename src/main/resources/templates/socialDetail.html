@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>更新校内兼职</title>
+    <title>更新公告</title>
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/lib/bootstrap/css/bootstrap.css}"/>
@@ -80,52 +80,49 @@
 
                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu"><i class="icon-exclamation-sign"></i>校内兼职</div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
-                    <li ><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
-                    <li ><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
-                    <li class="active"><a th:href="@{/backMain/campusJob/updateCampusJob}">更新兼职</a></li>
+                    <li><a th:href="@{/backMain/campusJob/allCampusJob}">兼职管理</a></li>
+                    <li><a th:href="@{/backMain/campusJob/addCampusJob}">新增兼职</a></li>
+                    <li><a th:href="@{/backMain/campusJob/updateCampusJob}">更新兼职</a></li>
                 </ul>
 
                 <div class="nav-header" data-toggle="collapse" data-target="#legal-menu"><i class="icon-legal"></i>校外兼职</div>
                 <ul id="legal-menu" class="nav nav-list collapse in">
                     <li ><a th:href="@{/backMain/socialJob/allSocialJob}">兼职管理</a></li>
-                    <li ><a th:href="@{/backMain/socialJob/socialDetail}">兼职详情</a></li>
+                    <li class="active"><a th:href="@{/backMain/socialJob/socialDetail}">兼职详情</a></li>
                 </ul>
             </div>
         </div>
         <div class="span9">
-            <h2 class="page-title">更新兼职</h2>
+            <h2 class="page-title">兼职详情</h2>
 
             <div class="well">
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane active in" id="home">
                         <!--Form表单开始-->
-                        <form th:action="@{/backMain/campusJob/postUpdateCampus}" method="post" th:object="${pcCampusJob}">
+                        <form  method="post" th:object="${pcSocialJob}">
                             <label>JID</label>
-                            <input TYPE="text"  CLASS="input-xlarge" name="jid" th:value="${pcCampusJob.jid}" readonly="readonly"/>
+                            <input TYPE="text" th:value="${pcSocialJob.jid}" CLASS="input-xlarge" readonly="readonly"/>
                             <label>标题</label>
-                            <input TYPE="text"  CLASS="input-xlarge" name="title" th:value="${pcCampusJob.title}"/>
-                            <label>内容</label>
-                            <input TYPE="text"  CLASS="input-xlarge" name="content" th:value="${pcCampusJob.content}"/>
-                            <label>作者</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="author" th:value="${pcCampusJob.author}"/>
-                            <label>价格</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="price" th:value="${pcCampusJob.price}"/>
+                            <input TYPE="text" th:value="${pcSocialJob.title}" CLASS="input-xlarge" readonly="readonly" />
                             <label>地点</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="place" th:value="${pcCampusJob.place}"/>
+                            <input TYPE="text" th:value="${pcSocialJob.place}" CLASS="input-xlarge" readonly="readonly"/>
+                            <label>工作时间</label>
+                            <input TYPE="text" th:value="${pcSocialJob.time}" CLASS="input-xlarge" readonly="readonly"/>
+                            <label>价格</label>
+                            <input TYPE="text" th:value="${pcSocialJob.price}" CLASS="input-xlarge" readonly="readonly"/>
+                            <label>来源</label>
+                            <input TYPE="text" th:value="${pcSocialJob.source}" CLASS="input-xlarge" readonly="readonly"/>
                             <label>状态</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="state" placeholder="1：不加入小黑屋  2 ：加入小黑屋" th:value="${pcCampusJob.getstate()}"/>
-                            <label>开始时间</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="beginTime" placeholder="eg: 2018-02-28 14:06:48"  th:value="${#dates.format(pcCampusJob.beginTime,'yyyy-MM-dd hh:mm:ss')}"/>
-                            <label>结束时间</label>
-                            <input TYPE="text"  CLASS="input-xlarge"  name="endTime" placeholder="eg: 2018-02-28 14:06:48"  th:value="${#dates.format(pcCampusJob.endTime,'yyyy-MM-dd hh:mm:ss')}"/>
-                            <label>创建时间</label>
-                            <input TYPE="text"  th:value="${#dates.format(pcCampusJob.createTime,'yyyy-MM-dd hh:mm:ss')}" CLASS="input-xlarge" name="createTime" readonly="readonly"/>
-                            <label>上次更新时间</label>
-                            <input TYPE="text"  th:value="${#dates.format(pcCampusJob.updateTime,'yyyy-MM-dd hh:mm:ss')}" CLASS="input-xlarge" name="updateTime" readonly="readonly"/>
-                            <div CLASS="btn-toolbar">
-                                <input type="submit" CLASS="btn btn-primary" value="Save"/>
-                                <a HREF="#myModal" data-toggle="modal" CLASS="btn">Cancel</a>
-                            </div>
+                            <input TYPE="text" th:value="${pcSocialJob.getstate()}" CLASS="input-xlarge" readonly="readonly"/>
+                            <label>原文地址</label>
+                            <input TYPE="text" th:value="${pcSocialJob.detailUrl}" CLASS="input-xlarge" readonly="readonly"/>
+                            <label>抓取时间</label>
+                            <input TYPE="text"  th:value="${#dates.format(pcSocialJob.created,'yyyy-MM-dd hh:mm:ss')}" CLASS="input-xlarge"  readonly="readonly"/>
+
+                            <!--<div CLASS="btn-toolbar">-->
+                                <!--<input type="submit" CLASS="btn btn-primary" value="Save"/>-->
+                                <!--<a HREF="#myModal" data-toggle="modal" CLASS="btn">Cancel</a>-->
+                            <!--</div>-->
                         </form>
                         <!--Form表单开始-->
                     </div>

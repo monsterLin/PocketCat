@@ -56,5 +56,10 @@ public class PcSocialJobsTest {
         System.out.println("影响的行数："+result);
     }
 
+    @Test
+    public void testSelectByJid(){
+        PcSocialJob pcSocialJob = pcSocialJobService.getPcSocialJob(20);
+        System.out.println(pcSocialJob.getTitle());
+    }
 
 }
