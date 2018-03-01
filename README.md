@@ -23,8 +23,9 @@
 
 ### 源码编译运行
 - git clone https://github.com/monsterLin/PocketCat.git
-- 打开Intellij IDEA ，编译运行
-- 构建打包，使用如下命令：
+- 打开Intellij IDEA
+- 配置`application.properties`
+- 编译运行||构建打包，使用如下命令：
 
 ```
 cd 项目跟目录（和pom.xml同级）
@@ -32,6 +33,7 @@ cd 项目跟目录（和pom.xml同级）
 //排除测试代码后进行打包
 //前提是电脑配置了MAVEN环境变量
 mvn clean package  -Dmaven.test.skip=true
+
 
 ```
 
