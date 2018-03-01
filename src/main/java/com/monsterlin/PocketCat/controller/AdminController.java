@@ -43,7 +43,7 @@ public class AdminController {
         String userPass = request.getParameter("password");
         PcAdmin admin = adminService.selectAdmin(userName, userPass);
         if (admin == null) {
-            return "login";
+            return "redirect:/login";
         }
 
         HttpSession session = request.getSession();
