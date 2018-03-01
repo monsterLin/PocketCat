@@ -19,10 +19,45 @@
 - 使用`BootStrap`进行后台的设计，后台是找的模板进行修改过的(｀・ω・´)
 - 系统设计遵循`MVC`架构ヾ(=･ω･=)o
 
+### 开始使用
+
+### 源码编译运行
+- git clone https://github.com/monsterLin/PocketCat.git
+- 打开Intellij IDEA ，编译运行
+- 构建打包，使用如下命令：
+
+```
+cd 项目跟目录（和pom.xml同级）
+
+//排除测试代码后进行打包
+//前提是电脑配置了MAVEN环境变量
+mvn clean package  -Dmaven.test.skip=true
+
+
+```
+
+### 直接运行jar文件
+- 下载目标文件: [点我下载](http://oszh5svp5.bkt.clouddn.com/pocketcat/PocketCat-1.0.0-SNAPSHOT.jar)
+- 使用如下命令运行：
+
+```
+//控制台开启，则服务运行；相反，则服务停止
+java -jar  PocketCat-1.0.0-SNAPSHOT.jar
+
+//保持服务挂起状态
+java -jar PocketCat-1.0.0-SNAPSHOT.jar &
+
+//在启动的时候选择读取不同的配置文件
+java -jar app.jar --spring.profiles.active=dev
+
+//在启动的时候设置jvm参数
+java -Xms10m -Xmx80m -jar PocketCat-1.0.0-SNAPSHOT.jar &
+
+```
+
+
 ### 项目预览
-
 ![pic01](http://oszh5svp5.bkt.clouddn.com/pocketcat/pic01.png)
-
 ![pic07](http://oszh5svp5.bkt.clouddn.com/pocketcat/pic07.png)
 
 ### 相关资料
