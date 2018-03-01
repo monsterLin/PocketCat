@@ -2,7 +2,7 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
-	<title>小黑屋</title>
+	<title>留言板</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
@@ -22,23 +22,20 @@
 </div>
 <div class="box clearfix">
 	<div class="fl j_list">
-		<ul>
-			<a href="detail.html" class="clearfix" th:each="campusJob : ${campusJobList}">
-				<div class="fl wen">
-					<h4 th:text="${campusJob.title}"></h4>
-					<h5 th:text="${campusJob.content}"></h5>
-					<h6 th:text="${#dates.format(campusJob.updateTime,'yyyy-MM-dd')} + '发布&nbsp; | &nbsp;'
-							          +'有效期：' +${#dates.format(campusJob.beginTime,'yyyy-MM-dd')}
-                                     +' &nbsp;-&nbsp; ' +${#dates.format(campusJob.endTime,'yyyy-MM-dd')}" ></h6>
-				</div>
-				<div class="fr w_zi">
-					<div class="s_img">
-						<img src="images/5.png" width="60" height="60"/>
-					</div>
-				</div>
-			</a>
+		<div id="container"></div>
+		<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"/>
+		<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+		<script>
+            var gitalk = new Gitalk({
+                clientID: '188d1fba3e38e1d23180',
+                clientSecret: 'b1b85572cc8504fb5e2dc615cbe4f775fb26b000',
+                repo: 'Gitalk_Comment',
+                owner: 'monsterLin',
+                admin: ['monsterLin'],
+            })
 
-		</ul>
+            gitalk.render('container')
+		</script>
 	</div>
 	<div class="fr img_list">
 		<ul>

@@ -133,5 +133,10 @@ public class IndexController {
         return "login";
     }
 
+    @RequestMapping(value = "/bbs")
+    public String bbs() {
+        return "bbs";
+    }
+
 
 }
