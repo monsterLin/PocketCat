@@ -25,6 +25,7 @@
 - git clone https://github.com/monsterLin/PocketCat.git
 - 打开Intellij IDEA
 - 配置`application.properties`
+- 配置[gitalk](https://github.com/gitalk/gitalk)，具体页面在`resources/templates/bbs.html`
 - 编译运行||构建打包，使用如下命令：
 
 ```
