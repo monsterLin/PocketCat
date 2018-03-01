@@ -19,6 +19,10 @@
 - 使用`BootStrap`进行后台的设计，后台是找的模板进行修改过的(｀・ω・´)
 - 系统设计遵循`MVC`架构ヾ(=･ω･=)o
 
+### 项目预览
+![pic01](http://oszh5svp5.bkt.clouddn.com/pocketcat/pic01.png)
+![pic07](http://oszh5svp5.bkt.clouddn.com/pocketcat/pic07.png)
+
 ### 相关资料
 - [Spring Boot系列文章](http://www.ityouknow.com/spring-boot.html)
 - [tinypng图片压缩](https://tinypng.com/)
