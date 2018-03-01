@@ -33,7 +33,6 @@ cd 项目跟目录（和pom.xml同级）
 //前提是电脑配置了MAVEN环境变量
 mvn clean package  -Dmaven.test.skip=true
 
-
 ```
 
 ### 直接运行jar文件
