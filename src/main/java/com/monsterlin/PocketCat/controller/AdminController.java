@@ -26,6 +26,7 @@ public class AdminController {
 
     private PcAdminService adminService;
 
+
     @Autowired
     public AdminController(PcAdminService adminService) {
         this.adminService = adminService;
@@ -54,10 +55,10 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = "clear")
+    @RequestMapping(value = "/clear")
     public String clear(HttpServletRequest request) {
         SessionUtil.clearSession(request);
-        return "login";
+        return "redirect:/login";
     }
 
 

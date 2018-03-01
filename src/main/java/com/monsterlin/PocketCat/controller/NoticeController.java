@@ -1,7 +1,9 @@
 package com.monsterlin.PocketCat.controller;
 
+import com.monsterlin.PocketCat.domain.PcAdmin;
 import com.monsterlin.PocketCat.domain.PcNotice;
 import com.monsterlin.PocketCat.service.PcNoticeService;
+import com.monsterlin.PocketCat.utils.SessionUtil;
 import com.monsterlin.PocketCat.utils.TimeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -27,33 +30,57 @@ public class NoticeController {
     PcNoticeService pcNoticeService ;
 
     @RequestMapping(value = "/allNotice")
-    public String allNotice(Model model) {
-        List<PcNotice> pcNoticeList = pcNoticeService.getPcNoticeByPage(1,20);
-        model.addAttribute("pcNoticeList",pcNoticeList);
-        return "allNotice";
+    public String allNotice(HttpServletRequest request,Model model) {
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
+        }else {
+            List<PcNotice> pcNoticeList = pcNoticeService.getPcNoticeByPage(1,20);
+            model.addAttribute("pcNoticeList",pcNoticeList);
+            HttpSession session = request.getSession();
+            session.setAttribute("session", pcAdmin);
+            model.addAttribute("userName", pcAdmin.getUsername());
+            return "allNotice";
+        }
+
     }
 
     @RequestMapping(value = "/addNotice")
-    public String addNotice(){
-        return "addNotice";
+    public String addNotice(HttpServletRequest request,Model model){
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
+        }else {
+            HttpSession session = request.getSession();
+            session.setAttribute("session", pcAdmin);
+            model.addAttribute("userName", pcAdmin.getUsername());
+            return "addNotice";
+        }
+
     }
 
 
     @RequestMapping(value = "/postAddNotice",method = RequestMethod.POST)
     public String postAddNotice(HttpServletRequest request){
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-        String author = request.getParameter("author");
-
-        long nowStamp = TimeUtil.getNowTimeStamp();
-
-        PcNotice pcNotice = new PcNotice(title,content,author,nowStamp,nowStamp);
-        int result = pcNoticeService.insertPcNotice(pcNotice);
-        if (result!=0){
-            return "redirect:/backMain/notice/allNotice";
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
         }else {
-            return "redirect:/backMain/notice/addNotice";
+            String title = request.getParameter("title");
+            String content = request.getParameter("content");
+            String author = request.getParameter("author");
+
+            long nowStamp = TimeUtil.getNowTimeStamp();
+
+            PcNotice pcNotice = new PcNotice(title,content,author,nowStamp,nowStamp);
+            int result = pcNoticeService.insertPcNotice(pcNotice);
+            if (result!=0){
+                return "redirect:/backMain/notice/allNotice";
+            }else {
+                return "redirect:/backMain/notice/addNotice";
+            }
         }
+
     }
 
 
@@ -63,62 +90,87 @@ public class NoticeController {
      * @return
      */
     @RequestMapping(value = "/updateNotice")
-    public String updateNotice(){
-        return "redirect:/backMain/notice/allNotice";
+    public String updateNotice(HttpServletRequest request){
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
+        }else {
+            return "redirect:/backMain/notice/allNotice";
+        }
     }
 
     @RequestMapping(value = "/postUpdateNotice",method = RequestMethod.POST)
     public String postUpdateNotice(HttpServletRequest request){
-        String nid = request.getParameter("nid");
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-        String author = request.getParameter("author");
-        String createTime = request.getParameter("createTime");
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
+        }else {
+            String nid = request.getParameter("nid");
+            String title = request.getParameter("title");
+            String content = request.getParameter("content");
+            String author = request.getParameter("author");
+            String createTime = request.getParameter("createTime");
 
-        long createStamp = TimeUtil.getTimeStamp("",createTime);
-        long nowStamp = TimeUtil.getNowTimeStamp();
+            long createStamp = TimeUtil.getTimeStamp("",createTime);
+            long nowStamp = TimeUtil.getNowTimeStamp();
 
-        PcNotice pcNotice = pcNoticeService.getPcNoticeByNid(Integer.parseInt(nid));
+            PcNotice pcNotice = pcNoticeService.getPcNoticeByNid(Integer.parseInt(nid));
 
-       if (pcNotice!=null){
-           pcNotice.setTitle(title);
-           pcNotice.setContent(content);
-           pcNotice.setAuthor(author);
-           pcNotice.setCreateTime(createStamp);
-           pcNotice.setUpdateTime(nowStamp);
-           int result = pcNoticeService.updatePcNotice(pcNotice);
-           if (result!=0){
-               return "redirect:/backMain/notice/allNotice";
-           }else {
-               return "redirect:/backMain/notice/updateNotice";
-           }
+            if (pcNotice!=null){
+                pcNotice.setTitle(title);
+                pcNotice.setContent(content);
+                pcNotice.setAuthor(author);
+                pcNotice.setCreateTime(createStamp);
+                pcNotice.setUpdateTime(nowStamp);
+                int result = pcNoticeService.updatePcNotice(pcNotice);
+                if (result!=0){
+                    return "redirect:/backMain/notice/allNotice";
+                }else {
+                    return "redirect:/backMain/notice/updateNotice";
+                }
 
-       }else {
-           return "redirect:/backMain/notice/updateNotice";
-       }
+            }else {
+                return "redirect:/backMain/notice/updateNotice";
+            }
+        }
+
     }
 
     @RequestMapping(value = "/getNoticeByNid")
-    public String getNoticeByNid(Model model , int nid){
-        PcNotice pcNotice = pcNoticeService.getPcNoticeByNid(nid);
-        if (pcNotice!=null){
-            model.addAttribute("pcNotice",pcNotice);
-            return "updateNotice";
+    public String getNoticeByNid(HttpServletRequest request,Model model , int nid){
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
         }else {
-            return "redirect:/backMain/notice/allNotice";
+            PcNotice pcNotice = pcNoticeService.getPcNoticeByNid(nid);
+            if (pcNotice!=null){
+                model.addAttribute("pcNotice",pcNotice);
+                HttpSession session = request.getSession();
+                session.setAttribute("session", pcAdmin);
+                model.addAttribute("userName", pcAdmin.getUsername());
+                return "updateNotice";
+            }else {
+                return "redirect:/backMain/notice/allNotice";
+            }
         }
 
     }
 
     @RequestMapping(value = "/deleteNotice")
-    public String deleteNotice(int nid){
-       int result =  pcNoticeService.deletePcNotice(nid);
+    public String deleteNotice(HttpServletRequest request,int nid){
+        PcAdmin pcAdmin = SessionUtil.checkAdmin(request);
+        if (pcAdmin==null){
+            return "redirect:/login";
+        }else {
+            int result =  pcNoticeService.deletePcNotice(nid);
 
-       if (result!=0){
-           return "redirect:/backMain/notice/allNotice";
-       }else{
-           return "redirect:/backMain/notice/allNotice";
-       }
+            if (result!=0){
+                return "redirect:/backMain/notice/allNotice";
+            }else{
+                return "redirect:/backMain/notice/allNotice";
+            }
+        }
+
 
     }
 }

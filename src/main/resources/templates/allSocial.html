@@ -41,20 +41,17 @@
                 <!--Session对象得到用户-->
                 <li id="fat-menu" class="dropdown">
                     <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-user"></i>monsterlin
+                        <i class="icon-user"></i><span th:text="${userName}" ></span>
                         <i class="icon-caret-down"></i>
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="login.html">Logout</a></li>
+                        <li><a tabindex="-1" th:href="@{/admin/clear}">Logout</a></li>
                     </ul>
                 </li>
 
             </ul>
-            <a class="brand" th:href="@{/backMain}"><span class="first">Online</span> <span
-                    class="second">Shop</span></a>
+            <a class="brand" th:href="@{/backMain}"><span class="first">Pocket</span> <span class="second">Cat</span></a>
         </div>
     </div>
 </div>

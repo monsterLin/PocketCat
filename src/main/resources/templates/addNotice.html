@@ -34,16 +34,14 @@
         <div CLASS="container-fluid">
             <ul CLASS="nav pull-right">
 
-                <li id="fat-menu" CLASS="dropdown">
-                    <a HREF="#" id="drop3" ROLE="button" CLASS="dropdown-toggle" data-toggle="dropdown">
-                        <i CLASS="icon-user"></i>monsterlin
-                        <i CLASS="icon-caret-down"></i>
+                <li id="fat-menu" class="dropdown">
+                    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-user"></i><span th:text="${userName}" ></span>
+                        <i class="icon-caret-down"></i>
                     </a>
 
-                    <ul CLASS="dropdown-menu">
-                        <li><a TABINDEX="-1" HREF="#">Settings</a></li>
-                        <li CLASS="divider"></li>
-                        <li><a TABINDEX="-1" HREF="login.html">Logout</a></li>
+                    <ul class="dropdown-menu">
+                        <li><a tabindex="-1" th:href="@{/admin/clear}">Logout</a></li>
                     </ul>
                 </li>
             </ul>
