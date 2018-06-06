@@ -27,6 +27,30 @@
 - 打开Intellij IDEA
 - 配置`application.properties`
 - 配置[gitalk](https://github.com/gitalk/gitalk)，具体页面在`resources/templates/bbs.html`
+- 配置application.properties
+
+```
+com.monsterlin.title=
+com.monsterlin.description=
+
+mybatis.type-aliases-package=com.monsterlin.pocketcat.domain
+
+spring.datasource.url=jdbc:mysql://127.0.01:3306/dpocketcat?useUnicode=true&characterEncoding=utf-8
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+spring.mail.host= smtp.163.com
+spring.mail.username=test@163.com
+spring.mail.password=123456
+spring.mail.default-encoding=UTF-8
+
+mail.fromMail.addr=test@163.com
+
+server.port=8088
+
+```
+
 - 编译运行||构建打包，使用如下命令：
 
 ```
