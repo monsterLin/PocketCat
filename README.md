@@ -27,7 +27,7 @@
 - 打开Intellij IDEA
 - 配置`application.properties`
 - 配置[gitalk](https://github.com/gitalk/gitalk)，具体页面在`resources/templates/bbs.html`
-- 配置application.properties
+- 配置application.properties -> resources/application.properties
 
 ```
 com.monsterlin.title=
